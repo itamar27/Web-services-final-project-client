@@ -1,8 +1,22 @@
 /*
  * Gloנal varible declarition 
  */
+
+class JobInfo {
+    constructor(owner_id, job_title, job_price, post_date) {
+        this.owner_id = owner_id;
+        this.job_title = job_title;
+        this.job_price = job_price;
+        this.post_date = post_date;
+    }
+}
+
+/*
+ * Gloנal varible declarition 
+ */
 let counter = 0;
 const service_url = 'http://localhost:3000/api/externalApi/projects';
+const render = '../JobForm/index.html';
 
 
 /*
@@ -10,7 +24,6 @@ const service_url = 'http://localhost:3000/api/externalApi/projects';
  */
 
 const appendDataToJobList = (data) => {
-
 
     const jobList = $('#job-list');
 
@@ -42,9 +55,15 @@ const appendDataToJobList = (data) => {
     date.classList.add('col-md-2', 'text-center');
     button.classList.add('btn', 'btn-primary');
     button.type = 'submit';
+    button.id = `accept-${counter}`;
+    button.addEventListener('click', () => {
+        submit(li.id, data.owner_id);
+    });
 
     divHeader.classList.add('row');
+    divHeader.id = "header";
     divInfo.classList.add('row');
+    divInfo.id = "info";
     divButton.classList.add('row-flex', 'text-center');
     li.classList.add('list-group-item');
 
@@ -60,6 +79,7 @@ const createJobList = (jobs) => {
     jobs.forEach(job => {
         appendDataToJobList(job);
     })
+
 }
 
 function getJobList() {
@@ -72,6 +92,17 @@ function getJobList() {
     });
 }
 
+function submit(selector, id) {
+
+    const title = $(`#${selector}`).find('#header').find('h4').text();
+    const info = $(`#${selector}`).find('#info').find('p')
+    const price = info[3].innerText.split(':')[1];
+    const date = info[2].innerText.split(':')[1];
+
+    // const jobInfo = new JobInfo(id, title, price, date);
+
+    window.location.href = render + `?id=${id}&title=${title}&price=${price}&date=${date}`;
+}
 
 /*
  * Events on page load
@@ -79,4 +110,5 @@ function getJobList() {
 
 $(document).ready(() => {
     getJobList();
+
 })
