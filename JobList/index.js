@@ -1,23 +1,8 @@
 /*
- * Class declarition
- */
-class JobItem {
-    constructor(owner_id, title, currency, description, category, price, dateSubmitted) {
-        this.owner_id = owner_id;
-        this.title = title;
-        this.currency = currency;
-        this.description = description;
-        this.category = category;
-        this.price = price;
-        this.date = dateSubmitted;
-    }
-}
-
-/*
  * Gloנal varible declarition 
  */
 let counter = 0;
-const service_url = 'localhost:3000/api/externalApi/projects';
+const service_url = 'http://localhost:3000/api/externalApi/projects';
 
 
 /*
@@ -45,9 +30,9 @@ const appendDataToJobList = (data) => {
     li.id = `job-item-${++counter}`;
     header.innerText = data.title;
     description.innerText = `Job Description: ${data.description}`;
-    category.innerText = `Job category: ${data.category}`;
-    price.innerHTML = `Job rate: ${data.price}${data.currency}`;
-    date.innerHTML = `Post date : ${data.date}`;
+    category.innerText = `Job category: ${data.job_category}`;
+    price.innerHTML = `Job rate: ${data.price}${data.currency_code}`;
+    date.innerHTML = `Post date : ${data.time_submitted}`;
     button.innerHTML = `Accept`;
 
     header.classList.add('col-md-12', 'text-center');
@@ -72,14 +57,13 @@ const appendDataToJobList = (data) => {
 
 
 const createJobList = (jobs) => {
-    consoel.log(jobs);
     jobs.forEach(job => {
         appendDataToJobList(job);
     })
 }
 
 function getJobList() {
-    $.get({
+    $.ajax({
         url: service_url,
         type: 'GET',
         success: (jobs) => {
