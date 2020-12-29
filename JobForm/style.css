@@ -6,3 +6,12 @@
 html{
     height:100%;
 }
+
+#main-container{
+
+    padding:auto;
+    margin: auto;
+    width: 70%;
+    border: 1px solid;
+
+}
