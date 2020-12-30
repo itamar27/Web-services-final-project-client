@@ -1,8 +1,9 @@
 const get_url = 'localhost:3000/api/customers/';
-const post_url = 'localhost:3000/api/jobs';
+const post_url = 'http://localhost:3000/api/jobs';
 const freelancer_id = 1;
 const counter = {}
 counter.count = 1;
+
 
 
 
@@ -14,8 +15,11 @@ $(document).ready(() => {
     const owner_id = urlParams.get('id');
     const title = urlParams.get('title');
     const price = urlParams.get('price');
-    const date = urlParams.get('date');
+    const rawDate = urlParams.get('date');
+    const date_array = rawDate.split('/');
+    const date = `${date_array[1]}/${date_array[0]}/${date_array[2]}`;
 
+    console.log(owner_id);
     //const customer = getCustomer(owner_id);
     const customer = {
         id: 2,
@@ -72,10 +76,12 @@ const deleteGoal = (counter) => {
 
 const submitForm = (owner_id, freelancer_id, price, startDate) => {
     const project_name = $('#project-name').val();
-    const deadline = $('#deadline').val();
+    const Deadline = $('#deadline').val();
+    const date_array = Deadline.split('-');
+    const deadline = `${date_array[1]}/${date_array[2]}/${date_array[0]}`;
     const goalsChild = Array.from($('#goals').children());
 
-    const goalList = [];
+    const goals = [];
 
     goalsChild.forEach(goal => {
 
@@ -95,7 +101,7 @@ const submitForm = (owner_id, freelancer_id, price, startDate) => {
         Goal.meaningful = important;
 
 
-        goalList.push(Goal);
+        goals.push(Goal);
 
     })
 
@@ -117,8 +123,12 @@ const getCustomer = (owner_id) => {
 function updateUserById(info) {
     console.log(info)
     $.ajax({
-        url: post_urlz,
+        url: post_url,
         type: 'POST',
-        data: info
+        dataType: 'json',
+        data: info,
+        success: (job) => {
+            window.location.href = `../JobMap/index.html?job_id=${job.id}`;
+        }
     });
 }
