@@ -1,17 +1,36 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-html{
-    height:100%;
+html {
+    height: 100%;
 }
 
-#main-container{
-
-    padding:auto;
+#main-container {
+    padding: auto;
     margin: auto;
     width: 70%;
-    border: 1px solid;
+}
 
+.jumbotron {
+    background-color: rgb(173, 204, 216);
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    background-color: rgb(204, 209, 223);
+}
+
+#info p {
+    font-size: 15px;
+}
+
+.goals {
+    margin-bottom: 15px;
 }

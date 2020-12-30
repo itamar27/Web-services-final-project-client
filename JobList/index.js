@@ -99,8 +99,6 @@ function submit(selector, id) {
     const price = info[3].innerText.split(':')[1];
     const date = info[2].innerText.split(':')[1];
 
-    // const jobInfo = new JobInfo(id, title, price, date);
-
     window.location.href = render + `?id=${id}&title=${title}&price=${price}&date=${date}`;
 }
 
