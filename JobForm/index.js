@@ -1,5 +1,5 @@
-const get_url = 'localhost:3000/api/customers/';
-const post_url = 'http://localhost:3000/api/jobs';
+const get_url = 'https://freelancerjobmap.herokuapp.com/api/customers/';
+const post_url = 'https://freelancerjobmap.herokuapp.com/api/jobs';
 const freelancer_id = 1;
 const counter = {}
 counter.count = 1;
@@ -17,7 +17,9 @@ $(document).ready(() => {
     const price = urlParams.get('price');
     const rawDate = urlParams.get('date');
     const date_array = rawDate.split('/');
-    const date = `${date_array[1]}/${date_array[0]}/${date_array[2]}`;
+    date_array.forEach(date => date.trim());
+    const date = `${date_array[0]}/${date_array[1]}/${date_array[2]}`;
+    console.log(date);
 
     console.log(owner_id);
     //const customer = getCustomer(owner_id);
