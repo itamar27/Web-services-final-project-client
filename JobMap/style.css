@@ -14,3 +14,51 @@ html {
 #info p {
     font-size: 15px;
 }
+
+.phases {
+    display:flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.phase{
+    margin:10px 0;
+    display:flex;
+    justify-content:space-around;
+    background-color: rgb(173, 204, 216);
+    border-radius:5px;
+}
+
+.jumbotron{
+    display:flex;
+    justify-content:center;
+}
+
+.card.text-center{
+    margin:5px;
+    border:1px solid;
+    border-radius:5px;
+    justify-content:center;
+    width: 20rem;
+}
+
+.card.text-center.meaningful{
+    border-color: red;
+    border-width: 2px;
+}
+
+.card-body{
+    margin:auto 0;
+    padding:5px;
+}
+
+.progress{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.phase-label{
+    position: relative;
+    left: 0;
+    top: 0;
+}
