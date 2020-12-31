@@ -31,8 +31,16 @@ html {
 
 .jumbotron{
     display:flex;
+    flex-direction: column;
     justify-content:center;
+    align-items:center;
 }
+
+.jumbotron.row{
+    margin: 5px auto;
+}
+
+
 
 .card.text-center{
     margin:5px;
@@ -52,6 +60,9 @@ html {
     padding:5px;
 }
 
+.progress-bar{
+    color: black;
+}
 .progress{
     margin-top:5px;
     margin-bottom:5px;

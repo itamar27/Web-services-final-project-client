@@ -11,7 +11,7 @@ $(document).ready(() => {
 
 const createJobMap = (job) => {
 
-    createHeader(job.project_name, job.description);
+    createHeader(job.project_name);
 
     let phases = new Array();
     job.goals.sort((a, b) => { a.phase > b.phase });
@@ -32,9 +32,9 @@ const createJobMap = (job) => {
     })
 }
 
-const createHeader = (title, description) => {
+const createHeader = (title) => {
     const header = `<div class="jumbotron jumbotron-fluid">
-                        <div class="row" id="title">${title}</div>
+                        <h3 class="row" id="title"><b>${title}</b></h3>
                     </div>`;
 
     const phases = `<div class="phases" id="phases">
@@ -58,11 +58,13 @@ const buildgoal = (goal) => {
                     <p class="card-text">${goal.description}</p>
                     <a href="#" class="btn btn-primary">see coments</a>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: ${goal.progress}%" aria-valuenow="${goal.progress}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar text-center" role="progressbar" style="width: ${goal.progress}%;" aria-valuenow="${goal.progress}" aria-valuemin="0" aria-valuemax="100">${goal.progress}%</div>
                     </div>
+
                 </div>
             </div>`;
 }
+
 
 const createPhase = (phaseNumber) => {
     let phase = `<label class="phase-label">phase ${phaseNumber}</label>
@@ -73,12 +75,13 @@ const createPhase = (phaseNumber) => {
 }
 
 
-const getJobDetails = (job_id) => {
+const getJobDetails = (job_id,description) => {
     $.ajax({
         url: get_url + `${job_id}`,
         type: 'GET',
         success: (job) => {
-            createJobMap(job);
+            createJobMap(job,description);
         }
     });
 }
+
