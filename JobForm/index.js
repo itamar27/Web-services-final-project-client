@@ -4,9 +4,6 @@ const freelancer_id = 1;
 const counter = {}
 counter.count = 1;
 
-
-
-
 $(document).ready(() => {
 
     numOfClicks = 1;
@@ -19,10 +16,7 @@ $(document).ready(() => {
     const date_array = rawDate.split('/');
     date_array.forEach(date => date.trim());
     const date = `${date_array[0]}/${date_array[1]}/${date_array[2]}`;
-    console.log(date);
 
-    console.log(owner_id);
-    //const customer = getCustomer(owner_id);
     const customer = {
         id: 2,
         name: 'itamar yarden',
@@ -62,7 +56,6 @@ const addGoal = (counter) => {
 const deleteGoal = (counter) => {
 
     $('#delete-goal').on('click', () => {
-        console.log(counter.count);
 
         const goals = $('#goals');
         const lastChild = goals[0].lastElementChild;
@@ -123,7 +116,6 @@ const getCustomer = (owner_id) => {
 }
 
 function updateUserById(info) {
-    console.log(info)
     $.ajax({
         url: post_url,
         type: 'POST',
