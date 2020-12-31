@@ -15,7 +15,7 @@ class JobInfo {
  * Gloנal varible declarition 
  */
 let counter = 0;
-const service_url = 'http://localhost:3000/api/externalApi/projects';
+const service_url = 'https://freelancerjobmap.herokuapp.com/api/externalApi/projects';
 const render = '../JobForm/index.html';
 
 
@@ -45,7 +45,7 @@ const appendDataToJobList = (data) => {
     description.innerText = `Job Description: ${data.description}`;
     category.innerText = `Job category: ${data.job_category}`;
     price.innerHTML = `Job rate: ${data.price}${data.currency_code}`;
-    date.innerHTML = `Post date : ${data.time_submitted}`;
+    date.innerHTML = `Post date :${data.time_submitted}`;
     button.innerHTML = `Accept`;
 
     header.classList.add('col-md-12', 'text-center');
